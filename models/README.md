@@ -22,4 +22,4 @@ The `BaseModel` class serves as the foundation for other classes in this project
 
   - A key `__class__` is added to the dictionary, containing the class name of the object.
 
-  - The `created_at` and `updated_at` attributes are converted to string objects in ISO format (`%Y-%m-%dT%H:%M:%S.%f`, e.g., `2017-06-14T22:31:03.285259`). You can use the `isoformat()` method of the datetime object to achieve this.
+  - The `created_at` and `updated_at` attributes are converted to string objects in ISO format (`%Y-%m-%dT%H:%M:%S.%f`, e.g., `2017-06-14T22:31:03.285259`). The `strftime(format)` method of the datetime object was used to achieve this.
