@@ -44,33 +44,33 @@ Once the command interpreter is running, you can use it to manage objects within
 
 - **Create an Object**:
   ```bash
-  (hbnb) create <class_name>
+  ($) create <class_name>
   ```
 
 - **Retrieve an Object**:
   ```bash
-  (hbnb) show <class_name> <object_id>
+  ($) show <class_name> <object_id>
   ```
 
 - **Display All Objects or Objects of a Specific Class**:
   ```bash
-  (hbnb) all
+  ($) all
   (hbnb) all <class_name>
   ```
 
 - **Update an Object's Attributes**:
   ```bash
-  (hbnb) update <class_name> <object_id> <attribute_name> "<new_value>"
+  ($) update <class_name> <object_id> <attribute_name> "<new_value>"
   ```
 
 - **Destroy an Object**:
   ```bash
-  (hbnb) destroy <class_name> <object_id>
+  ($) destroy <class_name> <object_id>
   ```
 
 - **Quit the Console**:
   ```bash
-  (hbnb) quit
+  ($) quit
   ```
 
 ## Examples
@@ -79,27 +79,27 @@ Here are some examples of using the AirBnB clone command interpreter:
 
 - Creating a new User object:
   ```
-  (hbnb) create User
+  ($) create User
   ```
 
 - Showing details of a Place object with ID `1234-5678`:
   ```
-  (hbnb) show Place 1234-5678
+  ($) show Place 1234-5678
   ```
 
 - Listing all User objects:
   ```
-  (hbnb) all User
+  ($) all User
   ```
 
 - Updating the name attribute of a User with ID `user_id`:
   ```
-  (hbnb) update User user_id name "New Name"
+  ($) update User user_id name "New Name"
   ```
 
 - Destroying a Review object with ID `review_id`:
   ```
-  (hbnb) destroy Review review_id
+  ($) destroy Review review_id
   ```
 
 This command interpreter provides a convenient way to manage objects within the AirBnB clone project, facilitating the creation, retrieval, modification, and deletion of objects while abstracting the underlying storage mechanisms.
