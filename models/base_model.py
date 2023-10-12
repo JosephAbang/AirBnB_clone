@@ -6,6 +6,7 @@ BaseModel - base class of all our models
 
 import uuid
 from datetime import datetime as dt
+from models import storage
 
 
 class BaseModel:
@@ -25,6 +26,8 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = dt.now()
             self.updated_at = dt.now()
+            self.name = "Josh"
+            storage.new(self)
 
     def __str__(self):
         """Method defines str representation of instance"""
@@ -33,6 +36,7 @@ class BaseModel:
     def save(self):
         """Method updates the public instance attribute `updated_at`"""
         self.updated_at = dt.now()
+        storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all keys/values of __dict__"""
