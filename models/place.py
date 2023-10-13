@@ -3,10 +3,7 @@ Module defines class called Place
 Place class inherits from BaseModel
 """
 
-from base_model import BaseModel
-from city import City
-from user import User
-from amenity import Amenity
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):
