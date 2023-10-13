@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
                 del all_objs[obj_id]
                 return
         print("** no instance found **")
-            
+
     def do_all(self, line):
         """
         Prints all string representation of all instances
@@ -131,12 +131,19 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance
         """
-        args = shlex.split(line)
-        class_ = args[0]
-        id_ = args[1]
-        attr_name = args[2]
-        attr_val = args[3]
-        
+        try:
+            args = shlex.split(line)
+            class_ = args[0]
+            id_ = args[1]
+            attr_name = args[2]
+            attr_val = args[3]
+        except Exception:
+            class_ = None
+            id_ = None
+            attr_name = None
+            attr_val = None
+            pass
+
         if class_ is None:
             print("** class name missing **")
             return
@@ -173,8 +180,13 @@ class HBNBCommand(cmd.Cmd):
         inst.save()
 
 
-
 if __name__ == '__main__':
     from models import storage
     from models.base_model import BaseModel
+    from models.user import User
+    from models.place import Place
+    from models.state import State
+    from models.city import City
+    from models.amenity import Amenity
+    from models.review import Review
     HBNBCommand().cmdloop()
