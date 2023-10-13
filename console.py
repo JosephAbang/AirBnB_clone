@@ -4,6 +4,7 @@ Module defines a class called `HBNBCommand`
 `HBNBCommand` inherits from `cmd.Cmd` class
 """
 import cmd
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
@@ -19,15 +20,20 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """Called when an empty line is entered
+        """
+        Called when an empty line is entered
 
         If the method is not overridden it
         repeats the last non empty command entered
         """
         pass
 
+    def postloop(self):
+        print()
+
     def do_create(self, line):
-        """Creates a new instance
+        """
+        Creates a new instance
         Saves instance to a JSON File
         Prints the id
         """
@@ -47,7 +53,8 @@ class HBNBCommand(cmd.Cmd):
         return
 
     def do_show(self, line):
-        """Prints the string representation of an instance
+        """
+        Prints the string representation of an instance
         """
         if len(line.split()) == 1:
             print("** instance id missing **")
@@ -77,7 +84,8 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name
+        """
+        Deletes an instance based on the class name
         """
 
         if len(line.split()) == 0:
@@ -107,7 +115,8 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
             
     def do_all(self, line):
-        """Prints all string representation of all instances
+        """
+        Prints all string representation of all instances
         """
 
         if line not in globals():
@@ -115,28 +124,21 @@ class HBNBCommand(cmd.Cmd):
             return
 
         all_objs = storage.all()
-        str_list = []
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
-            str_list.append(obj)
-        print(str_list)
+            print(obj)
         return
 
     def do_update(self, line):
-        """Updates an instance
         """
-        class_ = line.split()[0]
-        id_ = line.split()[1]
-        attr_name = line.split()[2]
-        attr_val = line.split()[3]
-
-       # if isinstance(globals()[class_][attr_name], str):
-        #    attr_val = str(attr_val)
-       # elif isinstance(globals()[class_][attr_name], int):
-        #    attr_val = int(attr_val)
-       # elif isinstance(globals()[class_][attr_name], float):
-        #    attr_val = float(attr_val)
-
+        Updates an instance
+        """
+        args = shlex.split(line)
+        class_ = args[0]
+        id_ = args[1]
+        attr_name = args[2]
+        attr_val = args[3]
+        
         if class_ is None:
             print("** class name missing **")
             return
@@ -159,10 +161,18 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
 
-        inst = globals()[class_]()
-     #   setattr(inst, attr_name, attr_val)
-        globals()[class_]().__dict__[attr_name] = attr_val
-        globals()[class_]().save()
+        inst = all_objs[obj_key]
+        if hasattr(inst, attr_name):
+            attr_type = type(getattr(inst, attr_name))
+            if attr_type is str:
+                setattr(inst, attr_name, str(attr_val))
+            elif attr_type is int:
+                setattr(inst, attr_name, int(attr_val))
+            elif attr_type is float:
+                setattr(inst, attr_name, float(attr_val))
+        else:
+            setattr(inst, attr_name, attr_val)
+        inst.save()
 
 
 
