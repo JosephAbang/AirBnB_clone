@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         if _class is None:
             print("** class name missing **")
             return
-        if _class not in globals():
+        elif _class not in globals():
             print("** class doesn't exist **")
             return
 
@@ -54,14 +54,18 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints the string representation of an instance
         """
-        if len(line.split()) == 1:
-            print("** instance id missing **")
-            return
+        args = shlex.split(line)
 
-        _class = line.split()[0]
-        _id = line.split()[1]
+        try:
+            _class = args[0]
+            _id = args[1]
+        except Exception:
+            if len(args) < 1:
+                _class = None
+            if len(args) < 2:   
+                _id = None
 
-        if _class is None:
+        if _class is None or len(args) == 0:
             print("** class name missing **")
             return
         if _class not in globals():
@@ -86,14 +90,18 @@ class HBNBCommand(cmd.Cmd):
         Deletes an instance based on the class name
         """
 
-        if len(line.split()) == 0:
-            print("** class name missing **")
-            return
+        args = shlex.split(line)
 
-        _class = line.split()[0]
-        _id = line.split()[1]
+        try:
+            _class = args[0]
+            _id = args[1]
+        except Exception:
+            if len(args) < 1:
+                _class = None
+            if len(args) < 2:
+                _id = None
 
-        if _class is None:
+        if _class is None or len(args) == 0:
             print("** class name missing **")
             return
         if _class not in globals():
@@ -138,13 +146,17 @@ class HBNBCommand(cmd.Cmd):
             attr_name = args[2]
             attr_val = args[3]
         except Exception:
-            class_ = None
-            id_ = None
-            attr_name = None
-            attr_val = None
+            if len(args) < 1:
+                class_ = None
+            elif len(args) < 2:
+                id_ = None
+            elif len(args) < 3:
+                attr_name = None
+            elif len(args) < 4:
+                attr_val = None
             pass
 
-        if class_ is None:
+        if class_ is None and len(args) == 0:
             print("** class name missing **")
             return
         elif class_ not in globals():
