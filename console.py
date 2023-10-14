@@ -188,6 +188,13 @@ class HBNBCommand(cmd.Cmd):
             elif attr_type is float:
                 setattr(inst, attr_name, float(attr_val))
         else:
+            try:
+                attr_val = int(attr_val)
+            except Exception:
+                try:
+                    attr_val = float(attr_val)
+                except Exception:
+                    attr_val = str(attr_val)
             setattr(inst, attr_name, attr_val)
         inst.save()
 
