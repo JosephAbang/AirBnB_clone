@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+TestFile for BaseM0odel
+"""
 
 import unittest
 from datetime import datetime as dt
@@ -6,6 +9,10 @@ from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
+    """Class defines Test file for BaseModel
+    Inherits from unittest
+    """
+
     def test_Updated_at_type(self):
         b = BaseModel()
         self.assertEqual(type(b.updated_at), type(dt.now()))
@@ -17,6 +24,61 @@ class TestBaseModel(unittest.TestCase):
     def test_id_type(self):
         b = BaseModel()
         self.assertEqual(type(b.id), str)
+
+    def test_dict_id(self):
+        b = BaseModel()
+        my_dict = b.to_dict()
+        self.assertEqual(b.id, my_dict['id'])
+
+    def test_dict_updated_at(self):
+        b = BaseModel()
+        my_dict = b.to_dict()
+        self.assertEqual(b.created_at.isoformat(), my_dict['created_at'])
+
+    def test_dict_created_at(self):
+        b = BaseModel()
+        my_dict = b.to_dict()
+        self.assertEqual(b.updated_at.isoformat(), my_dict['updated_at'])
+
+    def test_class_name(self):
+        b = BaseModel()
+        my_dict = b.to_dict()
+        self.assertEqual(type(b).__name__, my_dict['__class__'])
+
+    def test_instance(self):
+        b = BaseModel()
+        self.assertIsInstance(BaseModel(), type(b))
+
+    def test_save_updated_at(self):
+        b = BaseModel()
+        before = b.to_dict()
+        b.save()
+        after = b.to_dict()
+        self.assertNotEqual(before['updated_at'], after['updated_at'])
+
+    def test_save_created_at(self):
+        b = BaseModel()
+        before = b.to_dict()
+        b.save()
+        after = b.to_dict()
+        self.assertEqual(before['created_at'], after['created_at'])
+
+    def test_save_id(self):
+        b = BaseModel()
+        before = b.to_dict()
+        b.save()
+        after = b.to_dict()
+        self.assertEqual(before['id'], after['id'])
+
+    def test_dicttype_created_at(self):
+        b = BaseModel()
+        my_dict = b.to_dict()
+        self.assertEqual(str, type(my_dict['created_at']))
+
+    def test_dicttype_updated_at(self):
+        b = BaseModel()
+        my_dict = b.to_dict()
+        self.assertEqual(str, type(my_dict['updated_at']))
 
 
 if __name__ == "__main__":
