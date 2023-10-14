@@ -37,10 +37,10 @@ class HBNBCommand(cmd.Cmd):
         """
 
         _class = line
-        if _class is None:
+        if _class is None or len(line) == 0:
             print("** class name missing **")
             return
-        if _class not in globals():
+        elif _class not in globals():
             print("** class doesn't exist **")
             return
 
@@ -54,14 +54,18 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints the string representation of an instance
         """
-        if len(line.split()) == 1:
-            print("** instance id missing **")
-            return
+        args = shlex.split(line)
 
-        _class = line.split()[0]
-        _id = line.split()[1]
+        try:
+            _class = args[0]
+            _id = args[1]
+        except Exception:
+            if len(args) < 1:
+                _class = None
+            if len(args) < 2:
+                _id = None
 
-        if _class is None:
+        if _class is None or len(args) == 0:
             print("** class name missing **")
             return
         if _class not in globals():
@@ -86,14 +90,18 @@ class HBNBCommand(cmd.Cmd):
         Deletes an instance based on the class name
         """
 
-        if len(line.split()) == 0:
-            print("** class name missing **")
-            return
+        args = shlex.split(line)
 
-        _class = line.split()[0]
-        _id = line.split()[1]
+        try:
+            _class = args[0]
+            _id = args[1]
+        except Exception:
+            if len(args) < 1:
+                _class = None
+            if len(args) < 2:
+                _id = None
 
-        if _class is None:
+        if _class is None or len(args) == 0:
             print("** class name missing **")
             return
         if _class not in globals():
@@ -124,7 +132,8 @@ class HBNBCommand(cmd.Cmd):
         all_objs = storage.all()
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
-            print(obj)
+            if type(obj).__name__ == line:
+                print(obj)
         return
 
     def do_update(self, line):
@@ -138,13 +147,17 @@ class HBNBCommand(cmd.Cmd):
             attr_name = args[2]
             attr_val = args[3]
         except Exception:
-            class_ = None
-            id_ = None
-            attr_name = None
-            attr_val = None
+            if len(args) < 1:
+                class_ = None
+            elif len(args) < 2:
+                id_ = None
+            elif len(args) < 3:
+                attr_name = None
+            elif len(args) < 4:
+                attr_val = None
             pass
 
-        if class_ is None:
+        if class_ is None and len(args) == 0:
             print("** class name missing **")
             return
         elif class_ not in globals():
@@ -176,6 +189,13 @@ class HBNBCommand(cmd.Cmd):
             elif attr_type is float:
                 setattr(inst, attr_name, float(attr_val))
         else:
+            try:
+                attr_val = int(attr_val)
+            except Exception:
+                try:
+                    attr_val = float(attr_val)
+                except Exception:
+                    attr_val = str(attr_val)
             setattr(inst, attr_name, attr_val)
         inst.save()
 
