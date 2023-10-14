@@ -31,7 +31,7 @@ class FileStorage:
             for item in ser_dict:
                 ser_dict[item] = ser_dict[item].to_dict()
             json.dump(ser_dict, f)
-        
+
     def reload(self):
         """deserializes the JSON file to a dict"""
         from models.base_model import BaseModel
@@ -42,7 +42,7 @@ class FileStorage:
         from models.amenity import Amenity
         from models.review import Review
 
-        class_ = {'BaseModel': BaseModel, 
+        class_ = {'BaseModel': BaseModel,
                   'User': User,
                   'Place': Place,
                   'State': State,
@@ -50,9 +50,11 @@ class FileStorage:
                   'Amenity': Amenity,
                   'Review': Review}
         try:
-            with open(FileStorage.__file_path, mode="r", encoding="utf-8") as f:
+            with open(FileStorage.__file_path, mode="r", encoding="utf-8")\
+                    as f:
                 data = json.load(f)
                 for key, obj_dict in data.items():
-                    FileStorage.__objects[key] = class_[obj_dict["__class__"]](**obj_dict)
+                    FileStorage.__objects[key] = \
+                            class_[obj_dict["__class__"]](**obj_dict)
         except FileNotFoundError:
             pass

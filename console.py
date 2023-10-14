@@ -62,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
         except Exception:
             if len(args) < 1:
                 _class = None
-            if len(args) < 2:   
+            if len(args) < 2:
                 _id = None
 
         if _class is None or len(args) == 0:
@@ -128,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
         if line not in globals():
             print("** class doesn't exist **")
             return
-        
+
         all_objs = storage.all()
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]

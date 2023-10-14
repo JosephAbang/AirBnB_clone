@@ -5,6 +5,7 @@ User class inherits from BaseModel class
 
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """User class that inherits from BaseModel"""
     email = ""
