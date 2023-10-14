@@ -24,7 +24,7 @@ class TestState(unittest.TestCase):
         self.assertEqual(type(n.updated_at), type(dt.now()))
 
     def test_id_type(self):
-        n = State() 
+        n = State()
         self.assertEqual(type(n.id), str)
 
     def test_dict_id(self):

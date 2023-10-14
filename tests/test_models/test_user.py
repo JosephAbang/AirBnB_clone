@@ -45,6 +45,5 @@ class TestUser(unittest.TestCase):
         self.assertEqual(before['id'], after['id'])
 
 
-
 if __name__ == "__main__":
     unittest.main()

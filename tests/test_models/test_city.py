@@ -29,7 +29,7 @@ class TestCity(unittest.TestCase):
         self.assertEqual(type(n.updated_at), type(dt.now()))
 
     def test_id_type(self):
-        n = City() 
+        n = City()
         self.assertEqual(type(n.id), str)
 
     def test_dict_id(self):
