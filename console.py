@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
         """
 
         _class = line
-        if _class is None:
+        if _class is None or len(line) == 0:
             print("** class name missing **")
             return
         elif _class not in globals():
