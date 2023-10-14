@@ -12,10 +12,13 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_quit(self, line):
-        """Quit command to exit the program\n"""
+        """Quit command to exit the program"""
         return True
 
-    do_EOF = do_quit
+    def do_EOF(self, line):
+        """Handle End of line character"""
+        print()
+        return True
 
     def emptyline(self):
         """
@@ -25,9 +28,6 @@ class HBNBCommand(cmd.Cmd):
         repeats the last non empty command entered
         """
         pass
-
-    def postloop(self):
-        print()
 
     def do_create(self, line):
         """
