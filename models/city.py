@@ -3,8 +3,7 @@ Module defines class called City
 City class inherits from BaseModel
 """
 
-from base_model import BaseModel
-from state import State
+from models.base_model import BaseModel
 
 
 class City(BaseModel):

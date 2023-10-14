@@ -3,8 +3,7 @@ Module defines class called Review
 Review class inherits from BaseModel
 """
 
-from base_model import BaseModel
-from place import Place
+from models.base_model import BaseModel
 
 
 class Review(BaseModel):
