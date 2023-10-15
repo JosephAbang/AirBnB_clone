@@ -38,13 +38,13 @@ class TestBaseModel(unittest.TestCase):
         """Test updated_at dictionary attribute type"""
         b = BaseModel()
         my_dict = b.to_dict()
-        self.assertEqual(b.created_at.isoformat(), my_dict['updated_at'])
+        self.assertEqual(b.updated_at.isoformat(), my_dict['updated_at'])
 
     def test_dict_created_at(self):
         """Test created_at dictionary atttribute type"""
         b = BaseModel()
         my_dict = b.to_dict()
-        self.assertEqual(b.updated_at.isoformat(), my_dict['created_at'])
+        self.assertEqual(b.created_at.isoformat(), my_dict['created_at'])
 
     def test_class_name(self):
         """Test class_name value in dictionary"""
