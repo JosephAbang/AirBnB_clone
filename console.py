@@ -27,6 +27,10 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def postloop(self):
+        """
+        Hook method executed once when
+        cmdloop() is about to return
+        """
         print()
 
     def do_create(self, line):
@@ -130,10 +134,15 @@ class HBNBCommand(cmd.Cmd):
             return
 
         all_objs = storage.all()
+        obj_list = []
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
             if type(obj).__name__ == line:
-                print(obj)
+                obj_list.append(str(obj))
+        if len(obj_list) != 0:
+            print(obj_list)
+        else:
+            print("** class doesn't exist **")
         return
 
     def do_update(self, line):
