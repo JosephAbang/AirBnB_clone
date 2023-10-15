@@ -139,7 +139,10 @@ class HBNBCommand(cmd.Cmd):
             obj = all_objs[obj_id]
             if type(obj).__name__ == line:
                 obj_list.append(str(obj))
-        print(obj_list)
+        if len(obj_list) != 0:
+            print(obj_list)
+        else:
+            print("** class doesn't exist **")
         return
 
     def do_update(self, line):
