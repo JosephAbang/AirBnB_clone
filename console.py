@@ -134,10 +134,12 @@ class HBNBCommand(cmd.Cmd):
             return
 
         all_objs = storage.all()
+        obj_list = []
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
             if type(obj).__name__ == line:
-                print(obj)
+                obj_list.append(str(obj))
+        print(obj_list)
         return
 
     def do_update(self, line):
