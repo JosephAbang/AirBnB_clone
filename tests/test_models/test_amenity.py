@@ -13,6 +13,7 @@ class TestAmenity(unittest.TestCase):
     """
 
     def test_name(self):
+        """Test for name attribute in Amenity Class"""
         obj = Amenity()
         obj.name = "Wayne Dave"
         self.assertEqual(type(obj.name), str)
