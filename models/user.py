@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Module defines a class called User
 User class inherits from BaseModel class
