@@ -27,6 +27,10 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def postloop(self):
+        """
+        Hook method executed once when
+        cmdloop() is about to return
+        """
         print()
 
     def do_create(self, line):
