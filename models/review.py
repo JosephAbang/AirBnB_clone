@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Module defines class called Review
 Review class inherits from BaseModel
