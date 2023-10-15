@@ -13,16 +13,19 @@ class TestReview(unittest.TestCase):
     """
 
     def test_place_id(self):
+        """Test for place_id attribute in Review Class"""
         obj = Review()
         obj.place_id = "3324"
         self.assertEqual(type(obj.place_id), str)
 
     def test_user_id(self):
+        """Test for user_id attribute in Review Class"""
         obj = Review()
         obj.user_id = "24234"
         self.assertEqual(type(obj.user_id), str)
 
     def test_text(self):
+        """Test for text attribute in Review Class"""
         obj = Review()
         obj.text = "Nice confortable apartment"
         self.assertEqual(type(obj.text), str)
