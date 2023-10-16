@@ -121,6 +121,7 @@ class HBNBCommand(cmd.Cmd):
         for obj_id in all_objs.copy().keys():
             if obj_id == obj_key:
                 del all_objs[obj_id]
+                storage.save()
                 return
         print("** no instance found **")
 
