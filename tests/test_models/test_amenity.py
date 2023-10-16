@@ -5,7 +5,7 @@ TestFile for class Amenity
 
 import unittest
 from datetime import datetime as dt
-from models.Amenity import Amenity
+from models.amenity import Amenity
 from models.base_model import BaseModel
 
 
