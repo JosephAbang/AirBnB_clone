@@ -121,6 +121,7 @@ class HBNBCommand(cmd.Cmd):
         for obj_id in all_objs.copy().keys():
             if obj_id == obj_key:
                 del all_objs[obj_id]
+                storage.save()
                 return
         print("** no instance found **")
 
@@ -129,16 +130,22 @@ class HBNBCommand(cmd.Cmd):
         Prints all string representation of all instances
         """
 
-        if line not in globals():
+        if line not in globals() and line != '':
             print("** class doesn't exist **")
             return
 
         all_objs = storage.all()
         obj_list = []
-        for obj_id in all_objs.keys():
-            obj = all_objs[obj_id]
-            if type(obj).__name__ == line:
-                obj_list.append(str(obj))
+        if line == '':
+            for obj_id in all_objs.keys():
+                for obj_id in all_objs.keys():
+                    obj = all_objs[obj_id]
+                    obj_list.append(str(obj))
+        else:
+            for obj_id in all_objs.keys():
+                obj = all_objs[obj_id]
+                if type(obj).__name__ == line:
+                    obj_list.append(str(obj))
         if len(obj_list) != 0:
             print(obj_list)
         else:
