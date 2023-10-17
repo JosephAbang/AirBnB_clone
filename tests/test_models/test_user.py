@@ -25,6 +25,12 @@ class TestUser(unittest.TestCase):
         new.password = "809889hhgcs9898"
         self.assertEqual(type(new.password), str)
 
+    def test_state_id(self):
+        """Test password attribute type"""
+        new = User()
+        new.name = "809889hhgcs9898"
+        self.assertEqual(type(new.name), str)
+
     def test_Updated_at_type(self):
         """Test updated_at attribu8te type"""
         n = User()
