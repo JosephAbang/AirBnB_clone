@@ -17,7 +17,7 @@ class TestReview(unittest.TestCase):
     def test_name(self):
         """Test name attribute type"""
         new = Review()
-        new.name = "Kaicee"
+        new.name = "Kaice"
         self.assertEqual(type(new.name), str)
 
     def test_password(self):
