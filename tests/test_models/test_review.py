@@ -25,6 +25,12 @@ class TestReview(unittest.TestCase):
         new.state_id = "809889hhgcs9898"
         self.assertEqual(type(new.state_id), str)
 
+    def test_name(self):
+        """Test password attribute type"""
+        new = Review()
+        new.name = "Hello"
+        self.assertEqual(type(new.name), str)
+
     def test_Updated_at_type(self):
         """Test updated_at attribu8te type"""
         n = Review()
