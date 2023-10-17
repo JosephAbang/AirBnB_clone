@@ -14,17 +14,16 @@ class TestReview(unittest.TestCase):
     Inherits from BaseModel
     """
 
-    def test_name(self):
+    def test_insatnce(self):
         """Test name attribute type"""
         new = Review()
-        new.name = "Kaice"
-        self.assertEqual(type(new.name), str)
+        self.assertIsInstance(new, BaseModel)
 
-    def test_password(self):
+    def test_state_id(self):
         """Test password attribute type"""
         new = Review()
         new.state_id = "809889hhgcs9898"
-        self.assertEqual(type(new.name), str)
+        self.assertEqual(type(new.state_id), str)
 
     def test_Updated_at_type(self):
         """Test updated_at attribu8te type"""

@@ -17,14 +17,13 @@ class TestUser(unittest.TestCase):
     def test_name(self):
         """Test name attribute type"""
         new = User()
-        new.name = "Kaicee"
-        self.assertEqual(type(new.name), str)
+        self.assertIsInstance(new, User)
 
     def test_password(self):
         """Test password attribute type"""
         new = User()
-        new.state_id = "809889hhgcs9898"
-        self.assertEqual(type(new.name), str)
+        new.password = "809889hhgcs9898"
+        self.assertEqual(type(new.password), str)
 
     def test_Updated_at_type(self):
         """Test updated_at attribu8te type"""
