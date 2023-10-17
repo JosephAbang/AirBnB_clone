@@ -14,18 +14,16 @@ class TestBaseModel(unittest.TestCase):
     Inherits from unittest
     """
 
-<<<<<<< HEAD
     def test_name(self):
         """Test name attribute type"""
         new = Review()
         new.name = "Kaicee"
         self.assertEqual(type(new.name), str)
-=======
+
     def test_instance(self):
         r = Review()
         self.assertIsInstance(Review, r)
         self.assertTrue(issubclass(type(r), BaseModel))
->>>>>>> 9f9928f0d6c88cae3a146a61f623dcd3d01b1288
 
     def test_attr(self):
         r = Review()

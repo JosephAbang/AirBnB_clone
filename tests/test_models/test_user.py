@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/python3
 """
 TestFile for class User
@@ -87,5 +86,3 @@ class TestUser(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-=======
->>>>>>> 9f9928f0d6c88cae3a146a61f623dcd3d01b1288
